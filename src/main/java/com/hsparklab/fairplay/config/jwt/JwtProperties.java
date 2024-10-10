@@ -1,4 +1,4 @@
-package com.hsparklab.fairplay.config;
+package com.hsparklab.fairplay.config.jwt;
 
 import lombok.Getter;
 import lombok.Setter;
