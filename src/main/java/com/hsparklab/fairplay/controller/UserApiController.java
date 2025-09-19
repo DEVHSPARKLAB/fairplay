@@ -1,9 +1,11 @@
 package com.hsparklab.fairplay.controller;
 
+import com.hsparklab.fairplay.dto.LoginMemberRequest;
 import com.hsparklab.fairplay.dto.RegistMemberRequest;
 import com.hsparklab.fairplay.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,15 @@ public class UserApiController {
         System.out.println(request.getPassword());
         memberService.save(request);
         return "redirect:/login";
+    }
 
+    @PostMapping("/login")
+    public String login(@RequestBody LoginMemberRequest loginMemberRequest){
+        String userName = loginMemberRequest.getEmail();
+        String password = loginMemberRequest.getPassword();
+
+        System.out.print("userName :" + userName);
+        System.out.print("userName :" + password);
+        return "index";
     }
 }

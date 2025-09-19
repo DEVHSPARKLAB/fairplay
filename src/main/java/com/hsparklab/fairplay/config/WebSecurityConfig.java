@@ -45,12 +45,14 @@ public class WebSecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable) //httpbasic disable (특정리소스 접근 시 httpbasic 인증 요청창 미사용)
                 .formLogin(AbstractHttpConfigurer::disable) //form login disable
                 .logout(AbstractHttpConfigurer::disable) //logout disable
-                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //Session 미사용 설정
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 new AntPathRequestMatcher("/login"),
                                 new AntPathRequestMatcher("/signup"),
-                                new AntPathRequestMatcher("/")
+                                new AntPathRequestMatcher("/user"),
+                                new AntPathRequestMatcher("/"),
+                                new AntPathRequestMatcher("/api/**")
                         ).permitAll()
                         .anyRequest().authenticated())
                 .build();
