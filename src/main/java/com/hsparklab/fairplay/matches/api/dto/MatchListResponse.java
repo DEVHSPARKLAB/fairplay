@@ -7,7 +7,6 @@ import java.util.List;
 @Getter
 @ToString
 @EqualsAndHashCode
-@AllArgsConstructor
 @Builder
 public class MatchListResponse {
     private int count;
